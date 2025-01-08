@@ -1,0 +1,57 @@
+﻿@model IEnumerable<PersonalFinanceManager.Models.userInfo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Users List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "SignUp", "Authentication")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.userName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.userPassword)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.userFullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.userMobile)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.userEmail)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.userName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.userPassword)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.userFullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.userMobile)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.userEmail)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.userId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.userId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.userId })
+        </td>
+    </tr>
+}
+
+</table>

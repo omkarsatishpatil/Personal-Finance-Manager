@@ -1,0 +1,33 @@
+﻿@model IEnumerable<PersonalFinanceManager.Models.TransactionHistory>
+
+<div>
+    @{
+        Html.RenderPartial("_DashboardNavbar", ViewBag.UserInfo as PersonalFinanceManager.Models.userInfo);
+    }
+</div>
+
+<h2>Transaction History</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Category</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@(item.TransactionDate.HasValue ? item.TransactionDate.Value.ToString("dd-MM-yyyy") : "N/A")</td>
+                <td>@item.TransactionType</td>
+                <td>@item.Description</td>
+                <td class="@(item.TransactionType == "Income" ? "text-success" : "text-danger")">@(item.TransactionType == "Income" ? "+" : "-") @item.Amount.ToString("C")</td>
+                <td>@item.Category</td>
+            </tr>
+        }
+    </tbody>
+</table>

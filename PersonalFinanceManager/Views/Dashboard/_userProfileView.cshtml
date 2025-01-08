@@ -1,0 +1,15 @@
+﻿<div class="card">
+    <div class="card-header">
+        <h4 class="text-center">User Profile</h4>
+    </div>
+    <div class="card-body">
+        <p><strong>Username:</strong> @Model.userName</p>
+        <p><strong>Full Name:</strong> @Model.userFullName</p>
+        <p><strong>Mobile:</strong> @Model.userMobile</p>
+        <p><strong>Email:</strong> @Model.userEmail</p>
+    </div>
+    <div class="card-footer d-flex justify-content-evenly">
+        @Html.ActionLink("Edit Profile", "EditProfile", "Authentication", new { area = "", id = Model.userId }, new { @class = "btn btn-warning" })
+        @Html.ActionLink("Delete Profile", "DeleteProfile", "Authentication", new { area = "", id = Model.userId }, new { @class = "btn btn-danger" })
+    </div>
+</div>

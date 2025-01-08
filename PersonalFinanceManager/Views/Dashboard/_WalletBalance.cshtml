@@ -1,0 +1,16 @@
+﻿@model PersonalFinanceManager.Models.ViewModels.CalculateBalance
+
+<div class="card">
+    <div class="card-header">
+        <h4 class="text-center">Wallet Balance</h4>
+    </div>
+    <div class="card-body">
+        <p hidden>Total Income: @Model.TotalIncome.ToString("C")</p>
+        <p hidden>Total Expense: @Model.TotalExpense.ToString("C")</p>
+        <p class="text-success fs-1 p-2">@Model.Balance.ToString("C")</p>
+    </div>
+    <div class="card-footer">
+        <button class="btn btn-primary">Set Budget</button>
+    </div>
+</div>
+

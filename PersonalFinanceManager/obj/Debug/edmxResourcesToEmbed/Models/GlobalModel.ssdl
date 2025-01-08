@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PFMDBModel2.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ExpenseCategories">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryName" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Description" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Expenses">
+    <Key>
+      <PropertyRef Name="ExpenseID" />
+    </Key>
+    <Property Name="ExpenseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ExpenseName" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Amount" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Category" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="ExpenseDate" Type="date" Nullable="false" />
+    <Property Name="Notes" Type="varchar(max)" />
+    <Property Name="userName" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Income">
+    <Key>
+      <PropertyRef Name="IncomeId" />
+    </Key>
+    <Property Name="IncomeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Source" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="DateReceived" Type="date" />
+    <Property Name="Notes" Type="varchar" MaxLength="500" />
+    <Property Name="userName" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="userInfo">
+    <Key>
+      <PropertyRef Name="userId" />
+    </Key>
+    <Property Name="userId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userName" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="userPassword" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="userFullName" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="userMobile" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="userEmail" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'PFMDB.dbo.TransactionHistory' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TransactionHistory">
+    <Key>
+      <PropertyRef Name="TransactionID" />
+      <PropertyRef Name="TransactionType" />
+      <PropertyRef Name="Description" />
+      <PropertyRef Name="Amount" />
+      <PropertyRef Name="userName" />
+    </Key>
+    <Property Name="TransactionID" Type="int" Nullable="false" />
+    <Property Name="TransactionDate" Type="date" />
+    <Property Name="TransactionType" Type="varchar" MaxLength="7" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Category" Type="varchar" MaxLength="20" />
+    <Property Name="userName" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="PFMDBModel2StoreContainer">
+    <EntitySet Name="ExpenseCategories" EntityType="Self.ExpenseCategories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Expenses" EntityType="Self.Expenses" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Income" EntityType="Self.Income" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="userInfo" EntityType="Self.userInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TransactionHistory" EntityType="Self.TransactionHistory" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TransactionHistory].[TransactionID] AS [TransactionID], 
+    [TransactionHistory].[TransactionDate] AS [TransactionDate], 
+    [TransactionHistory].[TransactionType] AS [TransactionType], 
+    [TransactionHistory].[Description] AS [Description], 
+    [TransactionHistory].[Amount] AS [Amount], 
+    [TransactionHistory].[Category] AS [Category], 
+    [TransactionHistory].[userName] AS [userName]
+    FROM [dbo].[TransactionHistory] AS [TransactionHistory]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

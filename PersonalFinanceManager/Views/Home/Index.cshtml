@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<main>
+
+    <div class="d-flex">
+        <div class="container">
+            <section class="row" aria-labelledby="aspnetTitle">
+                <h1 id="title">Personal Finance Tracker</h1>
+                <p class="lead fs-4 fw-normal text-primary">An application that allows users to track their income, expenses, and budgets. Provided features for generating reports and visualizing financial data.</p>
+
+                <div class="my-5">
+                    @Html.ActionLink("Learn More", "About", "Home", new { area = "" }, new { @class = "btn btn-primary btn-md" })
+                </div>
+            </section>
+        </div>
+        <div class="container">
+            <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                <div class="container">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="carousel-inner">
+                        <div class="carousel-item bg-transparent active" data-bs-interval="1500">
+                            <h1 class="text-center p-5">Take Control of Your Finances with Ease </h1>
+                            <div class="">
+                                <h5 class="text-center pb-5">Track Your Expenses, Manage Your Income, and Save Smarter.</h5>
+                            </div>
+                        </div>
+                        <div class="carousel-item bg-transparent" data-bs-interval="3000">
+                            <h1 class="text-center p-5">Simplify Your Financial Life</h1>
+                            <div class="">
+                                <h5 class="text-center pb-5">Your Personal Finance Manager for Budgeting, Planning, and Monitoring.</h5>
+                            </div>
+                        </div>
+                        <div class="carousel-item bg-transparent" data-bs-interval="">
+                            <h1 class="text-center p-5">Achieve Your Financial Goals</h1>
+                            <div class="">
+                                <h5 class="text-center pb-5">All-in-One Solution for Expense Tracking, Income Management, and More.</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container d-flex gap-5 g-5">
+        @{
+            var usercount = Html.Action("UserCount", "Home"); 
+            @Html.Raw(usercount); 
+        }
+    </div>
+
+</main>

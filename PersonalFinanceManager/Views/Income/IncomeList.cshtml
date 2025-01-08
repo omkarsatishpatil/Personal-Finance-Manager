@@ -1,0 +1,57 @@
+﻿@model IEnumerable<PersonalFinanceManager.Models.Income>
+
+@{
+    ViewBag.Title = "Income List";
+}
+<div>
+    @{
+        Html.RenderPartial("_DashboardNavbar", ViewBag.UserInfo as PersonalFinanceManager.Models.userInfo);
+    }
+</div>
+
+<h2>Income List</h2>
+
+<p>
+    @Html.ActionLink("Add New Income", "AddIncome", "Income", new { userName = ViewBag.UserName }, new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Source)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateReceived)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Notes)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Source)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateReceived)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Notes)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditIncome", new { id = item.IncomeId, userName = ViewBag.UserName }) |
+                @Html.ActionLink("Details", "Details", new { id = item.IncomeId, userName = ViewBag.UserName }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.IncomeId, userName = ViewBag.UserName })
+            </td>
+        </tr>
+    }
+
+</table>

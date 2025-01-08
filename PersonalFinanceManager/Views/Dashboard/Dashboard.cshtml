@@ -1,0 +1,28 @@
+﻿@model PersonalFinanceManager.Models.userInfo
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+<div>
+    @{
+        Html.RenderPartial("_DashboardNavbar");
+    }
+</div>
+<div class="d-sm-inline-flex justify-content-evenly">
+    <div class="card mx-2 p-2 bg-light bg-gradient shadow">
+        @{
+            Html.RenderPartial("_userProfileView");
+        }
+    </div>
+
+    <div class="card mx-2 p-2 bg-light bg-gradient shadow">
+        @{
+            var userName = User.Identity.Name as string;
+            if (!string.IsNullOrEmpty(userName))
+            {
+                var walletModel = Html.Action("WalletBalance", "Dashboard", new { userName = userName }); // Get the WalletBalance partial view
+                @Html.Raw(walletModel); // Render the partial view with the correct model
+            }
+        }
+    </div>
+</div>

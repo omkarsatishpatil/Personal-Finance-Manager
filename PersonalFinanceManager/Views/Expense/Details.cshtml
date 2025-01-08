@@ -1,0 +1,62 @@
+﻿@model PersonalFinanceManager.Models.Expens
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div>
+    @{
+        Html.RenderPartial("_DashboardNavbar", ViewBag.UserInfo as PersonalFinanceManager.Models.userInfo);
+    }
+</div>
+
+<div>
+    <h4>Expense Details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ExpenseName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExpenseName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExpenseDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExpenseDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Notes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Notes)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "EditExpense", new { id = Model.ExpenseID, userName = ViewBag.userName }) |
+    @Html.ActionLink("Back to List", "ExpenseList", new {userName = ViewBag.userName})
+</p>

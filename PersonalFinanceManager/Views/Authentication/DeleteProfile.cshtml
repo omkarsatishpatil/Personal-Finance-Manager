@@ -1,0 +1,68 @@
+﻿@model PersonalFinanceManager.Models.userInfo
+
+@{
+    ViewBag.Title = "Delete Profile";
+}
+
+<div>
+    @{
+        Html.RenderPartial("_DashboardNavbar");
+    }
+</div>
+
+<h3 class="text-danger">Are you sure you want to delete your profile?</h3>
+<div>
+    <h4>Delete Profile</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.userName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.userPassword)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userPassword)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.userFullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userFullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.userMobile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userMobile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.userEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userEmail)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to Dashboard", "Dashboard", "Dashboard")
+        </div>
+    }
+</div>

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PFMDB_IncomeModelStoreContainer" CdmEntityContainer="PFMDBEntities2">
+    <EntitySetMapping Name="Incomes">
+      <EntityTypeMapping TypeName="PFMDB_IncomeModel.Income">
+        <MappingFragment StoreEntitySet="Income">
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="IncomeId" ColumnName="IncomeId" />
+          <ScalarProperty Name="Source" ColumnName="Source" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="DateReceived" ColumnName="DateReceived" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
